@@ -1,0 +1,22 @@
+{
+  "name": "vuepress-theme-talltotal",
+  "version": "0.0.1",
+  "description": "talltotal theme for VuePress",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talltotal/vuepress-theme-talltotal.git"
+  },
+  "author": "talltotal",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "vuepress",
+    "vuepress-theme"
+  ],
+  "bugs": {
+    "url": "https://github.com/talltotal/vuepress-theme-talltotal/issues"
+  },
+  "homepage": "https://github.com/talltotal/vuepress-theme-talltotal#readme"
+}

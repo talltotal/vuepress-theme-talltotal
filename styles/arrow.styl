@@ -1,0 +1,44 @@
+@require './config'
+
+.arrow
+  display inline-block
+  width 0
+  height 0
+  position relative
+
+  &::before,
+  &::after
+    content ""
+    position absolute
+    width 6px
+    height 1.5px
+    border-radius 2px
+    background $arrowBgColor
+    transition transform .2s cubic-bezier(.645,.045,.355,1),top .2s cubic-bezier(.645,.045,.355,1)
+
+  &.up
+    &::before
+      transform rotate(-45deg) translateX(2px)
+    &::after
+      transform rotate(45deg) translateX(-2px)
+  &.down
+    &::before
+      transform rotate(45deg) translateX(2px)
+    &::after
+      transform rotate(-45deg) translateX(-2px)
+  // &.up
+  //   border-left 4px solid transparent
+  //   border-right 4px solid transparent
+  //   border-bottom 6px solid $arrowBgColor
+  // &.down
+  //   border-left 4px solid transparent
+  //   border-right 4px solid transparent
+  //   border-top 6px solid $arrowBgColor
+  // &.right
+  //   border-top 4px solid transparent
+  //   border-bottom 4px solid transparent
+  //   border-left 6px solid $arrowBgColor
+  // &.left
+  //   border-top 4px solid transparent
+  //   border-bottom 4px solid transparent
+  //   border-right 6px solid $arrowBgColor
