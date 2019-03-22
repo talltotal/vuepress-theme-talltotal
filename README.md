@@ -1,9 +1,22 @@
 # vuepress-theme-talltotal
 
+for [vuepress@0.x](https://vuepress.vuejs.org/zh/config/#theme)
+
+## install
+
+```bash
+npm install -D vuepress-theme-talltotal
+
+yarn add --dev vuepress-theme-talltotal
+```
+
+## config
+
 根据配置自动生成菜单：
 
 ```js
 {
+    theme: 'talltotal',
     themeConfig: {
         // 定义自动生成
         sidebar: 'auto',
@@ -20,6 +33,7 @@
     }
 }
 {
+    theme: 'talltotal',
     themeConfig: {
         sidebar: 'auto',
         listAllSidebar: {
