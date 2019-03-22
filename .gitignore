@@ -3,3 +3,5 @@ node_modules/
 .DS_Store
 .idea
 dist/
+yarn-error.log
+/packages/README.md

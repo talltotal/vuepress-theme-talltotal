@@ -203,7 +203,7 @@ function valuesOfGroup (obj) {
   return result
 }
 
-function resolveListAllSidebar (listAllSidebar, pages, route) {
+export function resolveListAllSidebar (listAllSidebar, pages, route) {
   if (!listAllSidebar) {
     return []
   } else {
@@ -233,7 +233,11 @@ function resolveListAllSidebar (listAllSidebar, pages, route) {
     for (let i = 0; i < pages.length; i++) {
       const { path } = pages[i]
 
-      if (isPathMatch(path, currentModule) && !isPathInList(path, ignore)) {
+      if ((
+          (currentModule === '/' && !isPathInList(path, modules))
+          || (currentModule !== '/' && isPathMatch(path, currentModule))
+        )
+        && !isPathInList(path, ignore)) {
         const pageItem = resolvePage(pages, path, currentModule)
         const localePath = path.slice(currentModule.length)
 

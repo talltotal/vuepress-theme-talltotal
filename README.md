@@ -23,7 +23,7 @@
     themeConfig: {
         sidebar: 'auto',
         listAllSidebar: {
-            // README.md 目录名，不设置时不会显示在菜单栏，设置时此项会列在左菜单的第一个
+            // 模块内的 README.md 目录名，不设置时不会显示在菜单栏，设置时此项会列在左菜单的第一个
             showIndex: 'home',
             // 定义模块，模块内的页面左菜单一致；不归属任何模块的页面合并为一个模块
             modules: ['/work/', '/docs/'],
