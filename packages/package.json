@@ -2,10 +2,7 @@
   "name": "vuepress-theme-talltotal",
   "version": "0.0.1",
   "description": "talltotal theme for VuePress",
-  "scripts": {
-    "test": "mocha",
-    "release": "npm run test && node ./script/version-sync.js && cd ./packages && npm publish"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/talltotal/vuepress-theme-talltotal.git"
@@ -20,9 +17,5 @@
   "bugs": {
     "url": "https://github.com/talltotal/vuepress-theme-talltotal/issues"
   },
-  "homepage": "https://github.com/talltotal/vuepress-theme-talltotal#readme",
-  "devDependencies": {
-    "expect.js": "^0.3.1",
-    "mocha": "^6.0.2"
-  }
+  "homepage": "https://github.com/talltotal/vuepress-theme-talltotal#readme"
 }
