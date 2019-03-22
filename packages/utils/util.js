@@ -232,14 +232,15 @@ export function resolveListAllSidebar (listAllSidebar, pages, route) {
 
     for (let i = 0; i < pages.length; i++) {
       const { path } = pages[i]
+      const decodePath = decodeURIComponent(path)
 
       if ((
-          (currentModule === '/' && !isPathInList(path, modules))
-          || (currentModule !== '/' && isPathMatch(path, currentModule))
+          (currentModule === '/' && !isPathInList(decodePath, modules))
+          || (currentModule !== '/' && isPathMatch(decodePath, currentModule))
         )
-        && !isPathInList(path, ignore)) {
-        const pageItem = resolvePage(pages, path, currentModule)
-        const localePath = path.slice(currentModule.length)
+        && !isPathInList(decodePath, ignore)) {
+        const pageItem = resolvePage(pages, decodePath, currentModule)
+        const localePath = decodePath.slice(currentModule.length)
 
         if (!localePath) {
           if (showIndex) {
@@ -251,7 +252,7 @@ export function resolveListAllSidebar (listAllSidebar, pages, route) {
         } else if (groupByDir) {
           groupPathByDir(parentGroup, baseGroup, localePath, pageItem)
         } else {
-          groupPath(parentGroup, baseGroup, group, path, pageItem)
+          groupPath(parentGroup, baseGroup, group, decodePath, pageItem)
         }
       }
     }
