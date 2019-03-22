@@ -119,7 +119,7 @@ export function resolveSidebarItems (page, route, site, localePath) {
   const listAllSidebar = localeConfig.listAllSidebar || themeConfig.listAllSidebar
   if (pageSidebarConfig === 'auto') {
     if (listAllSidebar) {
-      return resolveListAllSidebar(listAllSidebar, pages)
+      return resolveListAllSidebar(listAllSidebar, pages, route)
     } else {
       return resolveHeaders(page)
     }
@@ -139,57 +139,122 @@ export function resolveSidebarItems (page, route, site, localePath) {
 function isPathInList (path, list) {
   for (let i = 0; i < list.length; i++) {
     const item = list[i]
-    if (path.indexOf(item) === 0) {
+    if (isPathMatch(path, item)) {
       return true
     }
   }
   return false
 }
 
-function checkParentGroup (target, src, path, pageItem) {
+function isPathMatch (path, match) {
+  return path.indexOf(match) === 0
+}
+
+function groupPath (target, baseGroup, src, path, pageItem) {
   for (let key in src) {
     const matchList = src[key]
-    const parent = target[key] || (target[key] = { 
-      type: 'group',
-      collapsable: true,
-      title: key,
-      children: [],
-    })
     if (isPathInList(path, matchList)) {
-      parent.children.push(pageItem)
-      return true
+      const parent = target[key] || (target[key] = { 
+        type: 'group',
+        collapsable: true,
+        title: key,
+        children: [],
+      })
+
+      return parent.children.push(pageItem)
     }
   }
-  return false
+  baseGroup.push(pageItem)
 }
 
-function resolveListAllSidebar (listAllSidebar, pages) {
+function groupPathByDir (target, baseGroup, path, pageItem) {
+  const dirMatch = path.match(/([^/]+\/)/)
+  if (dirMatch) {
+    const dir = dirMatch[1]
+    const parent = target[dir] || (target[dir] = {
+      // _group: {},
+      type: 'group',
+      collapsable: true,
+      title: dir.slice(0, -1),
+      children: [],
+    })
+
+    parent.children.push(pageItem)
+    // groupPathByDir(parent._group, parent.children, path.slice(dir.length), pageItem)
+  } else {
+    baseGroup.push(pageItem)
+  }
+}
+
+function valuesOfGroup (obj) {
+  const result = []
+  for (let key in obj) {
+    const item = obj[key]
+    result.push({
+      type: 'group',
+      collapsable: true,
+      title: item.title,
+      children: [
+        ...valuesOfGroup(item._group),
+        ...item.children,
+      ],
+    })
+  }
+  return result
+}
+
+function resolveListAllSidebar (listAllSidebar, pages, route) {
   if (!listAllSidebar) {
     return []
   } else {
-    const { ignore = [], group = {} } = listAllSidebar
+    const { ignore = [], group = {}, modules = [], groupByDir, showIndex, orders } = listAllSidebar
+    /**
+     * 搜索项按模块划分，模块下按组划分
+     * 1. 根据route匹配“当前模块”，均不匹配的归入普通模块
+     * 2. 遍历所有页面，找到在“当前模块”的“同模块页面”
+     * 3. 将“同模块页面”归组
+     */ 
+    const currentPath = route.path
     const parentGroup = {}
     const baseGroup = []
     const first = []
+    let currentModule = '/'
+
+    if (isPathInList(currentPath, ignore)) return []
+
+    for (let i = 0; i < modules.length; i++) {
+      const moduleItem = modules[i]
+      if (isPathMatch(currentPath, moduleItem)) {
+        currentModule = moduleItem
+        break
+      }
+    }
 
     for (let i = 0; i < pages.length; i++) {
       const { path } = pages[i]
-      const isIgnore = isPathInList(path, ignore)
 
-      if (!isIgnore) {
-        const pageItem = resolvePage(pages, path, '/')
-        if (path === '/') {
-          first.push(pageItem)
-        } else {
-          if (!checkParentGroup(parentGroup, group, path, pageItem)) {
-            baseGroup.push(pageItem)
+      if (isPathMatch(path, currentModule) && !isPathInList(path, ignore)) {
+        const pageItem = resolvePage(pages, path, currentModule)
+        const localePath = path.slice(currentModule.length)
+
+        if (!localePath) {
+          if (showIndex) {
+            first.push({
+              ...pageItem,
+              title: showIndex,
+            })
           }
+        } else if (groupByDir) {
+          groupPathByDir(parentGroup, baseGroup, localePath, pageItem)
+        } else {
+          groupPath(parentGroup, baseGroup, group, path, pageItem)
         }
       }
     }
 
     return [
       ...first,
+      // ...valuesOfGroup(parentGroup),
       ...Object.values(parentGroup),
       ...baseGroup,
     ]
