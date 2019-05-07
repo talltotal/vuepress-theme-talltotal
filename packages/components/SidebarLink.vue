@@ -69,8 +69,8 @@ a.sidebar-link
   display inline-block
   color inherit
   border-left 0.25rem solid transparent
-  padding 0.35rem 1rem 0.35rem 1.25rem
-  line-height 2
+  padding 0.72rem 1rem 0.72rem 1.25rem
+  line-height initial
   width: 100%
   box-sizing: border-box
   &:hover
@@ -79,9 +79,11 @@ a.sidebar-link
     font-weight 600
     color $accentColor
     border-left-color $accentColor
-    background-color rgba(179,158,205,0.10)
+    background-color rgb(229,226,235)
   .sidebar-group &
     padding-left 2rem
+    padding-top 0.5rem
+    padding-bottom 0.5rem
   .sidebar-sub-headers &
     padding-top 0.25rem
     padding-bottom 0.25rem
