@@ -4,6 +4,9 @@
   "description": "talltotal theme for VuePress",
   "scripts": {
     "dev": "vuepress dev",
+    "lint:es": "eslint --ext .js,.vue .",
+    "lint:style": "stylelint packages/**/*.{css,less,scss}",
+    "lint:styl": "stylint packages/**/*.{styl,vue}",
     "test": "mocha --require esm",
     "release": "npm run test && node ./script/sync.js && cd ./packages && npm publish"
   },
@@ -23,9 +26,26 @@
   },
   "homepage": "https://github.com/talltotal/vuepress-theme-talltotal#readme",
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
     "esm": "^3.2.20",
     "expect.js": "^0.3.1",
     "mocha": "^6.0.2",
+    "poststylus": "^1.0.0",
+    "stylelint": "^10.0.1",
+    "stylelint-config-css-modules": "^1.4.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
+    "stylelint-order": "^3.0.0",
+    "stylint": "^1.5.9",
+    "stylus": "^0.54.5",
     "vuepress": "^0.14.10"
   }
 }

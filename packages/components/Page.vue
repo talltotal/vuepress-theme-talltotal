@@ -1,20 +1,20 @@
 <template>
   <div class="page">
-    <slot name="top"/>
+    <slot name="top" />
     <!-- 内容区域 -->
-    <component v-if="$page.frontmatter.pageLayout" :is="$page.frontmatter.pageLayout" />
-    <Content v-else :custom="false"/>
+    <component :is="$page.frontmatter.pageLayout" v-if="$page.frontmatter.pageLayout" />
+    <Content v-else :custom="false" />
     <div class="page-edit">
-      <div class="edit-link" v-if="editLink">
+      <div v-if="!!editLink" class="edit-link">
         <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
-        <OutboundLink/>
+        <OutboundLink />
       </div>
-      <div class="last-updated" v-if="lastUpdated">
+      <div v-if="!!lastUpdated" class="last-updated">
         <span class="prefix">{{ lastUpdatedText }}: </span>
         <span class="time">{{ lastUpdated }}</span>
       </div>
     </div>
-    <div class="page-nav" v-if="prev || next">
+    <div v-if="prev || next" class="page-nav">
       <p class="inner">
         <span v-if="prev" class="prev">
           ← <router-link v-if="prev" class="prev" :to="prev.path">
@@ -28,7 +28,7 @@
         </span>
       </p>
     </div>
-    <slot name="bottom"/>
+    <slot name="bottom" />
   </div>
 </template>
 
@@ -81,7 +81,7 @@ export default {
         editLinks,
         docsDir = '',
         docsBranch = 'master',
-        docsRepo = repo
+        docsRepo = repo,
       } = this.$site.themeConfig
 
       let path = normalize(this.$page.path)
@@ -100,7 +100,7 @@ export default {
         this.$site.themeConfig.editLinkText ||
         `Edit this page`
       )
-    }
+    },
   },
   methods: {
     createEditLink (repo, docsRepo, docsDir, docsBranch, path) {
@@ -128,8 +128,8 @@ export default {
         (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '') +
         path
       )
-    }
-  }
+    },
+  },
 }
 
 function resolvePrev (page, items) {

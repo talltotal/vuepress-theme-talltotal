@@ -1,20 +1,22 @@
 <template>
   <header class="navbar">
-    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
+    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
     <router-link :to="$localePath" class="home-link">
-      <img class="logo"
-        v-if="$site.themeConfig.logo"
-        :src="$withBase($site.themeConfig.logo)">
-      <span class="site-name"
-        v-if="$siteTitle"
-        :class="{ 'can-hide': $site.themeConfig.logo }">
+      <img v-if="$site.themeConfig.logo"
+           class="logo"
+           :src="$withBase($site.themeConfig.logo)"
+      >
+      <span v-if="$siteTitle"
+            class="site-name"
+            :class="{ 'can-hide': $site.themeConfig.logo }"
+      >
         {{ $siteTitle }}
       </span>
     </router-link>
     <div class="links">
-      <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia"/>
-      <SearchBox v-else-if="$site.themeConfig.search !== false"/>
-      <NavLinks class="can-hide"/>
+      <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia" />
+      <SearchBox v-else-if="$site.themeConfig.search !== false" />
+      <NavLinks class="can-hide" />
     </div>
   </header>
 </template>
@@ -33,8 +35,8 @@ export default {
     },
     isAlgoliaSearch () {
       return this.algolia && this.algolia.apiKey && this.algolia.indexName
-    }
-  }
+    },
+  },
 }
 </script>
 

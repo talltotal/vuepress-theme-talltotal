@@ -2,8 +2,9 @@
   <transition name="dropdown"
               @enter="setHeight"
               @after-enter="unsetHeight"
-              @before-leave="setHeight">
-    <slot></slot>
+              @before-leave="setHeight"
+  >
+    <slot />
   </transition>
 </template>
 
@@ -17,8 +18,8 @@ export default {
     },
     unsetHeight (items) {
       items.style.height = ''
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -1,19 +1,20 @@
 <template>
   <div class="sidebar">
-    <NavLinks/>
-    <slot name="top"/>
-    <ul class="sidebar-links" v-if="items.length">
+    <NavLinks />
+    <slot name="top" />
+    <ul v-if="items.length" class="sidebar-links">
       <li v-for="(item, i) in items" :key="i">
         <SidebarGroup v-if="item.type === 'group'"
-          :item="item"
-          :first="i === 0"
-          :open="i === openGroupIndex"
-          :collapsable="item.collapsable"
-          @toggle="toggleGroup(i)"/>
-        <SidebarLink v-else :item="item"/>
+                      :item="item"
+                      :first="i === 0"
+                      :open="i === openGroupIndex"
+                      :collapsable="item.collapsable"
+                      @toggle="toggleGroup(i)"
+        />
+        <SidebarLink v-else :item="item" />
       </li>
     </ul>
-    <slot name="bottom"/>
+    <slot name="bottom" />
   </div>
 </template>
 
@@ -28,22 +29,22 @@ export default {
   props: ['items'],
   data () {
     return {
-      openGroupIndex: 0
+      openGroupIndex: 0,
     }
-  },
-  created () {
-    this.refreshIndex()
   },
   watch: {
     '$route' () {
       this.refreshIndex()
-    }
+    },
+  },
+  created () {
+    this.refreshIndex()
   },
   methods: {
     refreshIndex () {
       const index = resolveOpenGroupIndex(
         this.$route,
-        this.items
+        this.items,
       )
       if (index > -1) {
         this.openGroupIndex = index
@@ -54,8 +55,8 @@ export default {
     },
     isActive (page) {
       return isActive(this.$route, page.path)
-    }
-  }
+    },
+  },
 }
 
 function resolveOpenGroupIndex (route, items) {

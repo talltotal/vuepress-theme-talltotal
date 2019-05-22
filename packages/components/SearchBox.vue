@@ -1,25 +1,28 @@
 <template>
   <div class="search-box">
     <input
-      @input="query = $event.target.value"
       aria-label="Search"
       :value="query"
       autocomplete="off"
       spellcheck="false"
       placeholder="请查询"
+      @input="query = $event.target.value"
       @focus="focused = true"
       @blur="focused = false"
       @keyup.enter="go(focusIndex)"
       @keyup.up="onUp"
-      @keyup.down="onDown">
-    <ul class="suggestions"
-      v-if="showSuggestions"
-      :class="{ 'align-right': alignRight }"
-      @mouseleave="unfocus">
-      <li class="suggestion" v-for="(s, i) in suggestions" :key="i"
-        :class="{ focused: i === focusIndex }"
-        @mousedown="go(i)"
-        @mouseenter="focus(i)">
+      @keyup.down="onDown"
+    >
+    <ul v-if="showSuggestions"
+        class="suggestions"
+        :class="{ 'align-right': alignRight }"
+        @mouseleave="unfocus"
+    >
+      <li v-for="(s, i) in suggestions" :key="i" class="suggestion"
+          :class="{ focused: i === focusIndex }"
+          @mousedown="go(i)"
+          @mouseenter="focus(i)"
+      >
         <a :href="s.path" @click.prevent>
           <span class="page-title">{{ s.title || s.path }}</span>
           <span v-if="s.header" class="header">&gt; {{ s.header.title }}</span>
@@ -35,7 +38,7 @@ export default {
     return {
       query: '',
       focused: false,
-      focusIndex: 0
+      focusIndex: 0,
     }
   },
   computed: {
@@ -82,7 +85,7 @@ export default {
             if (matches(h)) {
               res.push(Object.assign({}, p, {
                 path: p.path + '#' + h.slug,
-                header: h
+                header: h,
               }))
             }
           }
@@ -95,7 +98,7 @@ export default {
       const navCount = (this.$site.themeConfig.nav || []).length
       const repo = this.$site.repo ? 1 : 0
       return navCount + repo <= 2
-    }
+    },
   },
   methods: {
     getPageLocalePath (page) {
@@ -137,8 +140,8 @@ export default {
     },
     unfocus () {
       this.focusIndex = -1
-    }
-  }
+    },
+  },
 }
 </script>
 

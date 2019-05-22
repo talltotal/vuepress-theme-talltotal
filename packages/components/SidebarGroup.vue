@@ -2,14 +2,15 @@
   <div class="sidebar-group" :class="{ first, collapsable }">
     <p class="sidebar-heading" :class="{ open }" @click="$emit('toggle')">
       <span>{{ item.title }}</span>
-      <span class="arrow"
-        v-if="collapsable"
-        :class="open ? 'down' : 'up'"></span>
+      <span v-if="collapsable"
+            class="arrow"
+            :class="open ? 'down' : 'up'"
+      />
     </p>
     <DropdownTransition>
-      <ul class="sidebar-group-items" ref="items" v-if="open || !collapsable">
+      <ul v-if="open || !collapsable" ref="items" class="sidebar-group-items">
         <li v-for="(child, i) in item.children" :key="i">
-          <SidebarLink :item="child"/>
+          <SidebarLink :item="child" />
         </li>
       </ul>
     </DropdownTransition>
@@ -22,8 +23,8 @@ import DropdownTransition from './DropdownTransition.vue'
 
 export default {
   name: 'SidebarGroup',
+  components: { SidebarLink, DropdownTransition },
   props: ['item', 'first', 'open', 'collapsable'],
-  components: { SidebarLink, DropdownTransition }
 }
 </script>
 

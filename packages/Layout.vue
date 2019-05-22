@@ -1,26 +1,27 @@
 <template>
   <div class="theme-container"
-    :class="pageClasses"
-    @touchstart="onTouchStart"
-    @touchend="onTouchEnd">
-    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
-    
-    <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
+       :class="pageClasses"
+       @touchstart="onTouchStart"
+       @touchend="onTouchEnd"
+  >
+    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
+
+    <div class="sidebar-mask" @click="toggleSidebar(false)" />
     <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
-      <slot name="sidebar-top" slot="top"/>
-      <slot name="sidebar-bottom" slot="bottom"/>
+      <slot slot="top" name="sidebar-top" />
+      <slot slot="bottom" name="sidebar-bottom" />
     </Sidebar>
 
-    <div class="custom-layout" v-if="$page.frontmatter.layout">
-      <component :is="$page.frontmatter.layout"/>
+    <div v-if="$page.frontmatter.layout" class="custom-layout">
+      <component :is="$page.frontmatter.layout" />
     </div>
-    <Home v-else-if="$page.frontmatter.home"/>
+    <Home v-else-if="$page.frontmatter.home" />
     <Page v-else :sidebar-items="sidebarItems">
-      <slot name="page-top" slot="top"/>
-      <slot name="page-bottom" slot="bottom"/>
+      <slot slot="top" name="page-top" />
+      <slot slot="bottom" name="page-bottom" />
     </Page>
 
-    <SWUpdatePopup :updateEvent="swUpdateEvent" />
+    <SWUpdatePopup :update-event="swUpdateEvent" />
   </div>
 </template>
 
@@ -39,7 +40,7 @@ export default {
   data () {
     return {
       isSidebarOpen: false,
-      swUpdateEvent: null
+      swUpdateEvent: null,
     }
   },
 
@@ -74,7 +75,7 @@ export default {
         this.$page,
         this.$route,
         this.$site,
-        this.$localePath
+        this.$localePath,
       )
     },
     pageClasses () {
@@ -83,11 +84,11 @@ export default {
         {
           'no-navbar': !this.shouldShowNavbar,
           'sidebar-open': this.isSidebarOpen,
-          'no-sidebar': !this.shouldShowSidebar
+          'no-sidebar': !this.shouldShowSidebar,
         },
-        userPageClass
+        userPageClass,
       ]
-    }
+    },
   },
 
   mounted () {
@@ -119,7 +120,7 @@ export default {
     onTouchStart (e) {
       this.touchStart = {
         x: e.changedTouches[0].clientX,
-        y: e.changedTouches[0].clientY
+        y: e.changedTouches[0].clientY,
       }
     },
     onTouchEnd (e) {
@@ -135,8 +136,8 @@ export default {
     },
     onSWUpdated (e) {
       this.swUpdateEvent = e
-    }
-  }
+    },
+  },
 }
 </script>
 

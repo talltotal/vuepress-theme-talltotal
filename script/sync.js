@@ -7,5 +7,5 @@ const { version } = rootPackage
 
 cp.exec(`cd ./packages && npm version ${version}`)
 fs.copyFile(path.join(__dirname, '../README.md'), path.join(__dirname, '../packages/README.md'), (err) => {
-    if (err) throw err
+  if (err) throw err
 })

@@ -1,8 +1,8 @@
 <template>
   <router-link
+    v-if="!isExternal(link)"
     class="nav-link"
     :to="link"
-    v-if="!isExternal(link)"
     :exact="exact"
   >{{ item.text }}</router-link>
   <a
@@ -13,7 +13,7 @@
     :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
   >
     {{ item.text }}
-    <OutboundLink/>
+    <OutboundLink />
   </a>
 </template>
 
@@ -23,8 +23,8 @@ import { isExternal, isMailto, isTel, ensureExt } from '../utils/util'
 export default {
   props: {
     item: {
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     link () {
@@ -35,12 +35,12 @@ export default {
         return Object.keys(this.$site.locales).some(rootLink => rootLink === this.link)
       }
       return this.link === '/'
-    }
+    },
   },
   methods: {
     isExternal,
     isMailto,
-    isTel
-  }
+    isTel,
+  },
 }
 </script>

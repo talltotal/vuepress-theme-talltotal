@@ -62,7 +62,7 @@ export function resolvePage (pages, rawPath, base) {
     if (normalize(pages[i].path) === path) {
       return Object.assign({}, pages[i], {
         type: 'page',
-        path: ensureExt(rawPath)
+        path: ensureExt(rawPath),
       })
     }
   }
@@ -154,7 +154,7 @@ function groupPath (target, baseGroup, src, path, pageItem) {
   for (let key in src) {
     const matchList = src[key]
     if (isPathInList(path, matchList)) {
-      const parent = target[key] || (target[key] = { 
+      const parent = target[key] || (target[key] = {
         type: 'group',
         collapsable: true,
         title: key,
@@ -213,7 +213,7 @@ export function resolveListAllSidebar (listAllSidebar, pages, route) {
      * 1. 根据route匹配“当前模块”，均不匹配的归入普通模块
      * 2. 遍历所有页面，找到在“当前模块”的“同模块页面”
      * 3. 将“同模块页面”归组
-     */ 
+     */
     const currentPath = route.path
     const parentGroup = {}
     const baseGroup = []
@@ -235,10 +235,10 @@ export function resolveListAllSidebar (listAllSidebar, pages, route) {
       const decodePath = decodeURIComponent(path)
 
       if ((
-          (currentModule === '/' && !isPathInList(decodePath, modules))
-          || (currentModule !== '/' && isPathMatch(decodePath, currentModule))
-        )
-        && !isPathInList(decodePath, ignore)) {
+        (currentModule === '/' && !isPathInList(decodePath, modules)) ||
+          (currentModule !== '/' && isPathMatch(decodePath, currentModule))
+      ) &&
+        !isPathInList(decodePath, ignore)) {
         const pageItem = resolvePage(pages, decodePath, currentModule)
         const localePath = decodePath.slice(currentModule.length)
 
@@ -277,8 +277,8 @@ function resolveHeaders (page) {
       title: h.title,
       basePath: page.path,
       path: page.path + '#' + h.slug,
-      children: h.children || []
-    }))
+      children: h.children || [],
+    })),
   }]
 }
 
@@ -298,7 +298,7 @@ export function groupHeaders (headers) {
 
 export function resolveNavLinkItem (linkItem) {
   return Object.assign(linkItem, {
-    type: linkItem.items && linkItem.items.length ? 'links' : 'link'
+    type: linkItem.items && linkItem.items.length ? 'links' : 'link',
   })
 }
 
@@ -306,14 +306,14 @@ export function resolveMatchingConfig (route, config) {
   if (Array.isArray(config)) {
     return {
       base: '/',
-      config: config
+      config: config,
     }
   }
   for (const base in config) {
     if (ensureEndingSlash(route.path).indexOf(base) === 0) {
       return {
         base,
-        config: config[base]
+        config: config[base],
       }
     }
   }
@@ -331,13 +331,13 @@ function resolveItem (item, pages, base, isNested) {
     return resolvePage(pages, item, base)
   } else if (Array.isArray(item)) {
     return Object.assign(resolvePage(pages, item[0], base), {
-      title: item[1]
+      title: item[1],
     })
   } else {
     if (isNested) {
       console.error(
         '[vuepress] Nested sidebar groups are not supported. ' +
-        'Consider using navbar + categories instead.'
+        'Consider using navbar + categories instead.',
       )
     }
     const children = item.children || []
@@ -345,7 +345,7 @@ function resolveItem (item, pages, base, isNested) {
       type: 'group',
       title: item.title,
       children: children.map(child => resolveItem(child, pages, base, true)),
-      collapsable: item.collapsable !== false
+      collapsable: item.collapsable !== false,
     }
   }
 }

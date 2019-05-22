@@ -11,18 +11,17 @@
           <p
             class="description"
             v-html="data.tagline || $description || 'Welcome to your VuePress site'"
-          >
-          </p>
-          <p v-html="data.subline"></p>
-          <p class="action" v-if="data.actionText && data.actionLink">
-            <NavLink class="action-button" :item="actionLink"/>
+          />
+          <p v-html="data.subline" />
+          <p v-if="data.actionText && data.actionLink" class="action">
+            <NavLink class="action-button" :item="actionLink" />
           </p>
         </div>
       </div>
     </div>
     <div class="home">
-      <Content custom/>
-      <div class="footer" v-if="data.footer">
+      <Content custom />
+      <div v-if="data.footer" class="footer">
         {{ data.footer }}
       </div>
     </div>
@@ -41,10 +40,10 @@ export default {
     actionLink () {
       return {
         link: this.data.actionLink,
-        text: this.data.actionText
+        text: this.data.actionText,
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

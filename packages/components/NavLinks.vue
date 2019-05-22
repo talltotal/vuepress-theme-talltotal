@@ -1,21 +1,23 @@
 <template>
-  <nav class="nav-links" v-if="userLinks.length || repoLink">
+  <nav v-if="userLinks.length || !!repoLink" class="nav-links">
     <!-- user links -->
     <div
-      class="nav-item"
       v-for="item in userLinks"
-      :key="item.link">
-      <DropdownLink v-if="item.type === 'links'" :item="item"/>
-      <NavLink v-else :item="item"/>
+      :key="item.link"
+      class="nav-item"
+    >
+      <DropdownLink v-if="item.type === 'links'" :item="item" />
+      <NavLink v-else :item="item" />
     </div>
     <!-- repo link -->
-    <a v-if="repoLink"
-      :href="repoLink"
-      class="repo-link"
-      target="_blank"
-      rel="noopener noreferrer">
+    <a v-if="!!repoLink"
+       :href="repoLink"
+       class="repo-link"
+       target="_blank"
+       rel="noopener noreferrer"
+    >
       {{ repoLabel }}
-      <OutboundLink/>
+      <OutboundLink />
     </a>
   </nav>
 </template>
@@ -55,7 +57,7 @@ export default {
               }
             }
             return { text, link }
-          })
+          }),
         }
         return [...this.userNav, languageDropdown]
       }
@@ -64,7 +66,7 @@ export default {
     userLinks () {
       return (this.nav || []).map(link => {
         return Object.assign(resolveNavLinkItem(link), {
-          items: (link.items || []).map(resolveNavLinkItem)
+          items: (link.items || []).map(resolveNavLinkItem),
         })
       })
     },
@@ -92,8 +94,8 @@ export default {
       }
 
       return 'Source'
-    }
-  }
+    },
+  },
 }
 </script>
 

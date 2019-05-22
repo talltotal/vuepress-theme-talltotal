@@ -7,6 +7,12 @@
 <script>
 export default {
   props: ['options'],
+  watch: {
+    options (newValue) {
+      this.$el.innerHTML = '<input id="algolia-search-input" class="search-query">'
+      this.initialize(newValue)
+    },
+  },
   mounted () {
     this.initialize()
   },
@@ -14,22 +20,16 @@ export default {
     initialize () {
       Promise.all([
         import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.js'),
-        import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.css')
+        import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.css'),
       ]).then(([docsearch]) => {
         docsearch = docsearch.default
         docsearch(Object.assign(this.options, {
           debug: true,
-          inputSelector: '#algolia-search-input'
+          inputSelector: '#algolia-search-input',
         }))
       })
-    }
+    },
   },
-  watch: {
-    options (newValue) {
-      this.$el.innerHTML = '<input id="algolia-search-input" class="search-query">'
-      this.initialize(newValue)
-    }
-  }
 }
 </script>
 

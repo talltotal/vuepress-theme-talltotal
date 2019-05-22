@@ -4,9 +4,9 @@ export default {
   props: ['type', 'text'],
   render (h, { props, slots }) {
     return h('span', {
-      class: ['badge', props.type]
+      class: ['badge', props.type],
     }, props.text || slots().default)
-  }
+  },
 }
 </script>
 
