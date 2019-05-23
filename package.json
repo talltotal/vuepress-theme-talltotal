@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "description": "talltotal theme for VuePress",
   "scripts": {
+    "start": "npm run dev",
     "dev": "vuepress dev",
     "lint:es": "eslint --ext .js,.vue .",
     "lint:style": "stylelint packages/**/*.{css,less,scss}",

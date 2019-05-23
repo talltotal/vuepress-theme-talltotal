@@ -14,6 +14,12 @@ module.exports = {
             { text: '测试', link: '/test/demo.html' },
             { text: 'github', link: 'https://github.com/talltotal/vuepress-theme-talltotal' },
         ],
+        listAllSidebar: {
+            ignore: ['/packages', '/node_modules'],
+            showIndex: 'Home',
+            modules: ['/test/'],
+            groupByDir: true,
+        },
         sidebar: 'auto',
         lastUpdated: '最后更新',
     }

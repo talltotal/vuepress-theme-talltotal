@@ -88,6 +88,7 @@ a.sidebar-link
     padding-top 0.25rem
     padding-bottom 0.25rem
     border-left none
+    font-size 0.8em
     &.active
       font-weight 500
       background none
