@@ -55,7 +55,8 @@ body
   border-right 1px solid $borderColor
   overflow-y auto
 
-.content:not(.custom)
+.content:not(.custom),
+.content__default
   @extend $wrapper
   > *:first-child
     margin-top $navbarHeight

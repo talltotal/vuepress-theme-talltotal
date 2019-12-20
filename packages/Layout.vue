@@ -12,8 +12,8 @@
       <slot slot="bottom" name="sidebar-bottom" />
     </Sidebar>
 
-    <div v-if="$page.frontmatter.layout" class="custom-layout">
-      <component :is="$page.frontmatter.layout" />
+    <div v-if="$page.frontmatter.layout || $page.frontmatter.innerLayout" class="custom-layout">
+      <component :is="$page.frontmatter.layout || $page.frontmatter.innerLayout" />
     </div>
     <Home v-else-if="$page.frontmatter.home" />
     <Page v-else :sidebar-items="sidebarItems">
@@ -64,7 +64,7 @@ export default {
     shouldShowSidebar () {
       const { frontmatter } = this.$page
       return (
-        !frontmatter.layout &&
+        !(frontmatter.layout || frontmatter.innerLayout) &&
         !frontmatter.home &&
         frontmatter.sidebar !== false &&
         this.sidebarItems.length

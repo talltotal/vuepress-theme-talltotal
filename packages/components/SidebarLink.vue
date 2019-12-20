@@ -13,7 +13,7 @@ export default {
     const active = item.type === 'auto'
       ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
       : selfActive
-    const link = renderLink(h, item.path, item.title || item.path, active)
+    const link = renderLink(h, item.path, item.title || itemPathName(item.path), active)
     const configDepth = $page.frontmatter.sidebarDepth != null
       ? $page.frontmatter.sidebarDepth
       : $site.themeConfig.sidebarDepth
@@ -23,11 +23,16 @@ export default {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
     } else if ((active || displayAllHeaders) && item.headers && !hashRE.test(item.path)) {
       const children = groupHeaders(item.headers)
-      return [link, renderChildren(h, children, item.path, $route, maxDepth)]
+      return [link, renderChildren(h, children, itemPathName(item.path), $route, maxDepth)]
     } else {
       return link
     }
   },
+}
+
+function itemPathName (itemPath) {
+  const match = (itemPath || '').match(/([^/.]*)(\..+)*$/)
+  return match ? match[1] : itemPath
 }
 
 function renderLink (h, to, text, active) {

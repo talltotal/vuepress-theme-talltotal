@@ -1,6 +1,10 @@
 # vuepress-theme-talltotal
 
-for [vuepress@0.x](https://vuepress.vuejs.org/zh/config/#theme)
+for [vuepress](https://vuepress.vuejs.org/zh/config/#theme)
+
+## 0.x => 1.x
+- `frontmatter.layout` => `frontmatter.innerLayout`
+
 
 ## install
 
