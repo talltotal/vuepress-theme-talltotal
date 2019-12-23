@@ -1,8 +1,9 @@
 {
   "name": "vuepress-theme-talltotal",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "talltotal theme for VuePress",
   "scripts": {},
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/talltotal/vuepress-theme-talltotal.git"

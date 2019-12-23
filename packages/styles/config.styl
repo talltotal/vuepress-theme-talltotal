@@ -18,4 +18,7 @@ $MQMobileNarrow = 419px
 // code
 $lineNumbersWrapperWidth = 3.5rem
 
-// @import '~@temp/override.styl'
+// 兼容0.x和1.0
+// 0.x时，直接用override，也不会加载index.js
+// 1.0时，在index.js中将override转为palette
+@import '~@temp/override.styl'
