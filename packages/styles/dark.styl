@@ -1,0 +1,46 @@
+@media (prefers-color-scheme: dark)
+    body:not(.theme-light)
+        // code
+        code
+            color mix($codeBgColor, #fff, 10%)
+            background-color lighten($bgColorDark, 10%)
+        pre code, pre[class*="language-"] code
+            background-color: transparent;
+        // custom-blocks
+        .custom-block
+            &.tip
+                background-color mix(#42b983, $bgColorDark, 5%)
+            &.warning
+                background-color mix(#ffe564, $bgColorDark, 5%)
+                color lighten(#ffe564, 70%)
+                .custom-block-title
+                    color lighten(#ffe564, 50%)
+                a
+                    color $textColorDarl
+            &.danger
+                background-color mix(red, $bgColorDark, 5%)
+                color lighten(red, 70%)
+                .custom-block-title
+                    color lighten(red, 40%)
+                a
+                    color $textColorDarl
+        // theme
+        &
+            color $textColorDark
+            background $bgColorDark
+        .navbar
+            background-color #363636
+        .sidebar
+            background-color #282829
+            border-right-color $borderColorDark
+        h2
+            border-bottom-color $borderColorDark
+        hr
+            border-top-color $borderColorDark
+        tr
+            border-top-color lighten($borderColorDark, 10%)
+            &:nth-child(2n)
+                background-color lighten($bgColorDark, 10%)
+        th, td
+            border-color lighten($borderColorDark, 10%)
+

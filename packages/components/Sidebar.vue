@@ -103,4 +103,11 @@ function resolveOpenGroupIndex (route, items) {
         top calc(1rem - 2px)
     .sidebar-links
       padding 1rem 0
+
+@media (prefers-color-scheme: dark)
+  body:not(.theme-light)
+    .sidebar
+      .nav-links
+        border-bottom-color $borderColorDark
+
 </style>

@@ -9,8 +9,17 @@ module.exports = {
     },
     theme: '/../packages',
     themeConfig: {
+        // themeType: 'light',
         nav: [
-            { text: '首页', link: '/' },
+            {
+                text: '首页',
+                link: '/',
+                type: 'links',
+                items: [
+                    { text: '测试', link: '/test/demo.html' },
+                    { text: 'github', link: 'https://github.com/talltotal/vuepress-theme-talltotal' },
+                ]
+            },
             { text: '测试', link: '/test/demo.html' },
             { text: 'github', link: 'https://github.com/talltotal/vuepress-theme-talltotal' },
         ],

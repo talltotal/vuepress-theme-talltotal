@@ -93,6 +93,13 @@ export default {
     color lighten($textColor, 50%)
     font-size 14px
 
+@media (prefers-color-scheme: dark)
+  body:not(.theme-light)
+    .home
+      .footer
+        border-top-color $borderColorDark
+        color darken($textColorDark, 50%)
+
 @media (max-width: $MQMobile)
   .home
     .features

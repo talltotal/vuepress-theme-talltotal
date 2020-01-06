@@ -27,4 +27,10 @@
 @media (max-width: $MQMobile)
   .sidebar-button
     display block
+
+@media (prefers-color-scheme: dark)
+  body:not(.theme-light)
+    .sidebar-button
+      color $textColorDark
+
 </style>

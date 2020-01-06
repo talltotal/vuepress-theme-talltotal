@@ -170,7 +170,7 @@ export default {
       cursor auto
       border-color $accentColor
   .suggestions
-    background #fff
+    background #f1f0f3
     width 20rem
     position absolute
     top 1.5rem
@@ -184,26 +184,43 @@ export default {
   .suggestion
     line-height 1.4
     padding 0.4rem 0.8rem
-    border-radius 4px
     cursor pointer
     a
-      color lighten($textColor, 14%)
+      color #737f8c
       .page-title
         font-weight 600
       .header
         font-size 0.9em
         margin-left 0.25em
     &.focused
-      background-color #f4fafd
+      background-color rgba(181,174,206,0.2)
       a
         color $accentColor
 
+@media (prefers-color-scheme: dark)
+  body:not(.theme-light)
+    .search-box
+      input
+        color darken($textColorDark, 25%)
+        border-color lighten($borderColorDark, 10%)
+        background-color $bgColorDark
+      .suggestions
+        border-color $borderColorDark
+        background #282829
+      .suggestion
+        a
+          color darken($textColorDark, 14%)
+        &.focused
+          background-color lighten(#282829, 10%)
+          a
+            color $accentColor
 @media (max-width: $MQNarrow)
   .search-box
     input
       cursor pointer
       width 0
       border-color transparent
+      background-color unset
       position relative
       left 1rem
       &:focus

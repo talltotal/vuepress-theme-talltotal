@@ -98,7 +98,7 @@ export default {
       return (
         this.$themeLocaleConfig.editLinkText ||
         this.$site.themeConfig.editLinkText ||
-        `Edit this page`
+        'Edit this page'
       )
     },
   },
@@ -207,4 +207,18 @@ function find (page, items, offset) {
       float none
       text-align left
 
+@media (prefers-color-scheme: dark)
+  body:not(.theme-light)
+    .page-edit
+      .edit-link
+        a
+          color darken($textColorDark, 35%)
+      .last-updated
+        .prefix
+          color darken($textColorDark, 35%)
+        .time
+          color darken($textColorDark, 15%)
+    .page-nav
+      .inner
+        border-top-color $borderColorDark
 </style>

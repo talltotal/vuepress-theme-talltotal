@@ -14,6 +14,12 @@ npm install -D vuepress-theme-talltotal
 yarn add --dev vuepress-theme-talltotal
 ```
 
+## why
+- style
+- auto menu
+- themeType：light or dark
+    - 优先级：配置设置 > 系统设置 > 默认light
+
 ## config
 
 根据配置自动生成菜单：
@@ -22,6 +28,9 @@ yarn add --dev vuepress-theme-talltotal
 {
     theme: 'talltotal',
     themeConfig: {
+        // config for ‘themeType’
+        themeType: 'light', // or dark or undefined
+        // config for ‘auto menu’
         // 定义自动生成
         sidebar: 'auto',
         // 配置

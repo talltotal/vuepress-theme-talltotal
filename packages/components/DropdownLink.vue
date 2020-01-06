@@ -5,7 +5,7 @@
       <span class="arrow" :class="open ? 'down' : 'right'" />
     </a>
     <DropdownTransition>
-      <ul v-show="open" class="nav-dropdown">
+      <ul class="nav-dropdown" :style="open ? 'display: block' : ''">
         <li
           v-for="(subItem, index) in item.items"
           :key="subItem.link || index"
@@ -62,7 +62,7 @@ export default {
       border-color transparent
     .arrow
       vertical-align middle
-      margin-top -1px
+      margin-top -4px
       margin-left 0.4rem
   .nav-dropdown
     .dropdown-item
@@ -129,12 +129,6 @@ export default {
     &:hover .nav-dropdown
       // override the inline style.
       display block !important
-    .dropdown-title .arrow
-      // make the arrow always down at desktop
-      border-left 4px solid transparent
-      border-right 4px solid transparent
-      border-top 6px solid $arrowBgColor
-      border-bottom 0
     .nav-dropdown
       display none
       // Avoid height shaked by clicking
@@ -153,4 +147,12 @@ export default {
       border-radius 0.25rem
       white-space nowrap
       margin 0
+
+@media (prefers-color-scheme: dark) and (min-width: $MQMobile)
+  body:not(.theme-light)
+    .dropdown-wrapper
+      .nav-dropdown
+        background-color #282829
+        border-color $borderColorDark
+        border-bottom-color $borderColorDark
 </style>

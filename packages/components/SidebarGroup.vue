@@ -63,4 +63,9 @@ export default {
   transition height .1s ease-out
   overflow hidden
   background #f6f7f7
+
+@media (prefers-color-scheme: dark)
+  body:not(.theme-light)
+    .sidebar-group-items
+      background darken(#282829, 10%)
 </style>

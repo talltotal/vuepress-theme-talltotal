@@ -84,7 +84,7 @@ a.sidebar-link
     font-weight 600
     color $accentColor
     border-left-color $accentColor
-    background-color rgb(229,226,235)
+    background-color rgba(181,174,206,0.2)
   .sidebar-group &
     padding-left 2rem
     padding-top 0.5rem
@@ -97,4 +97,9 @@ a.sidebar-link
     &.active
       font-weight 500
       background none
+
+@media (prefers-color-scheme: dark)
+  body:not(.theme-light)
+    .sidebar .sidebar-sub-headers
+      background darken(#363636, 30%)
 </style>

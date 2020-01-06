@@ -1,6 +1,6 @@
 <template>
   <form id="search-form" class="algolia-search-wrapper search-box">
-    <input id="algolia-search-input" class="search-query">
+    <input id="algolia-search-input" class="search-query" placeholder="请查询">
   </form>
 </template>
 
@@ -37,6 +37,8 @@ export default {
 @import '~../styles/config.styl'
 
 .algolia-search-wrapper
+  .ds-without-1
+    display none !important
   & > span
     vertical-align middle
   .algolia-autocomplete
@@ -50,7 +52,7 @@ export default {
       padding 4px
       text-align left
       &:before
-        border-color #999
+        content none
       [class*=ds-dataset-]
         border none
         padding 0
@@ -59,7 +61,7 @@ export default {
       .ds-suggestion
         border-bottom 1px solid $borderColor
     .algolia-docsearch-suggestion--highlight
-      color #2c815b
+      color $accentColor
     .algolia-docsearch-suggestion
       border-color $borderColor
       padding 0
@@ -128,4 +130,36 @@ export default {
       margin -3px 3px 0
       vertical-align middle
 
+@media (prefers-color-scheme: dark)
+  body:not(.theme-light)
+    .algolia-search-wrapper
+      .algolia-autocomplete
+        .ds-dropdown-menu
+          background-color $bgColorDark
+          border-color lighten($bgColorDark, 35%)
+          .ds-suggestion
+            border-bottom-color lighten($bgColorDark, 35%)
+
+        .algolia-docsearch-suggestion
+          border-color $borderColorDark
+          .algolia-docsearch-suggestion--category-header
+            .algolia-docsearch-suggestion--highlight
+              background rgba(0, 0, 0, 0.6)
+          .algolia-docsearch-suggestion--title
+            color $textColorDark
+          .algolia-docsearch-suggestion--subcategory-column
+            background-color lighten($bgColorDark, 20%)
+            border-color $borderColorDark
+          .algolia-docsearch-suggestion--subcategory-column-text
+            color lighten($bgColorDark, 60%)
+        .ds-cursor .algolia-docsearch-suggestion--content
+          background-color lighten($bgColorDark, 30%) !important
+      .algolia-autocomplete .algolia-docsearch-suggestion,
+      .algolia-autocomplete .ds-dropdown-menu [class^=ds-dataset-]
+        background-color lighten($bgColorDark, 10%)
+      .algolia-autocomplete .algolia-docsearch-suggestion--category-header
+        border-bottom-color lighten($bgColorDark, 40%)
+      .algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column:before,
+      .algolia-autocomplete .algolia-docsearch-suggestion--content:before
+        background lighten($bgColorDark, 35%)
 </style>

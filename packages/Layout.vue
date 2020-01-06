@@ -1,8 +1,9 @@
 <template>
-  <div class="theme-container"
-       :class="pageClasses"
-       @touchstart="onTouchStart"
-       @touchend="onTouchEnd"
+  <div
+    class="theme-container"
+    :class="pageClasses"
+    @touchstart="onTouchStart"
+    @touchend="onTouchEnd"
   >
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
 
@@ -43,8 +44,20 @@ export default {
       swUpdateEvent: null,
     }
   },
-
+  watch: {
+    themeType: {
+      handler (val) {
+        document.body.className = val ? `theme-${val}` : ''
+      },
+      immediate: true,
+    },
+  },
   computed: {
+    themeType () {
+      const { themeConfig: { themeType } } = this.$site
+      const types = ['dark', 'light']
+      return (types.includes(themeType) && themeType) || ''
+    },
     shouldShowNavbar () {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page

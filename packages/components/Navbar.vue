@@ -73,4 +73,10 @@ export default {
     padding-left 4rem
     .can-hide
       display none
+
+@media (prefers-color-scheme: dark)
+  body:not(.theme-light)
+    .navbar
+      .site-name
+        color $textColorDark
 </style>
