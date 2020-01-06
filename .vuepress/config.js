@@ -1,4 +1,5 @@
 module.exports = {
+    base: '/vuepress-theme-talltotal/',
     title: 'demo',
     description: 'demo',
     markdown: {

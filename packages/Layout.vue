@@ -44,20 +44,8 @@ export default {
       swUpdateEvent: null,
     }
   },
-  watch: {
-    themeType: {
-      handler (val) {
-        document.body.className = val ? `theme-${val}` : ''
-      },
-      immediate: true,
-    },
-  },
+
   computed: {
-    themeType () {
-      const { themeConfig: { themeType } } = this.$site
-      const types = ['dark', 'light']
-      return (types.includes(themeType) && themeType) || ''
-    },
     shouldShowNavbar () {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
@@ -105,6 +93,12 @@ export default {
   },
 
   mounted () {
+    {
+      const { themeConfig: { themeType } } = this.$site
+      const types = ['dark', 'light']
+      const type = (types.includes(themeType) && themeType) || ''
+      document.body.className = type ? `theme-${type}` : ''
+    }
     window.addEventListener('scroll', this.onScroll)
 
     // configure progress bar
