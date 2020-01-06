@@ -10,7 +10,7 @@
     "lint:style": "stylelint packages/**/*.{css,less,scss}",
     "lint:styl": "stylint packages/**/*.{styl,vue}",
     "test": "mocha --require esm",
-    "release": "npm run test && node ./script/sync.js && cd ./packages && npm publish"
+    "release": "npm run test && ./build/update-docs.sh && node ./script/sync.js && cd ./packages && npm publish"
   },
   "repository": {
     "type": "git",
