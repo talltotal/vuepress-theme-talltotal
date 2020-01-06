@@ -1,7 +1,8 @@
 # MDTest
 
-## 目录
-[[toc]]
+<badge type="tip">badge: tip</badge>
+<badge type="warning">badge: warning</badge>
+<badge type="warn">badge: warn</badge>
 
 ## 标题
 ### 三级标题
@@ -33,7 +34,7 @@
 > > 嵌套引用
 > 引用内容
 >
-> ## 引用内的标题。
+> ## 引用内的标题
 > 1. 这是第一行列表项。
 > 2. 这是第二行列表项。
 >
@@ -114,3 +115,6 @@ This is a warning
 This is a dangerous warning
 :::
 
+
+## 目录
+[[toc]]

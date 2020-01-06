@@ -7,13 +7,6 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/node_modules/.bin/stylelint",
-            "args": ["packages/**/*.styl", "--customSyntax=./stylus.js"]
-        },
-        {
-            "type": "node",
-            "request": "launch",
             "name": "xxLaunch Program",
             "program": "${workspaceFolder}/node_modules/.bin/vuepress",
             "args": ["dev"]

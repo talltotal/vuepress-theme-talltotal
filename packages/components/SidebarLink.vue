@@ -23,7 +23,7 @@ export default {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
     } else if ((active || displayAllHeaders) && item.headers && !hashRE.test(item.path)) {
       const children = groupHeaders(item.headers)
-      return [link, renderChildren(h, children, itemPathName(item.path), $route, maxDepth)]
+      return [link, renderChildren(h, children, item.path, $route, maxDepth)]
     } else {
       return link
     }

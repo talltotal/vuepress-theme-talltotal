@@ -151,7 +151,7 @@ function isPathMatch (path, match) {
 }
 
 function groupPath (target, baseGroup, src, path, pageItem) {
-  for (let key in src) {
+  for (const key in src) {
     const matchList = src[key]
     if (isPathInList(path, matchList)) {
       const parent = target[key] || (target[key] = {
@@ -188,7 +188,7 @@ function groupPathByDir (target, baseGroup, path, pageItem) {
 
 function valuesOfGroup (obj) {
   const result = []
-  for (let key in obj) {
+  for (const key in obj) {
     const item = obj[key]
     result.push({
       type: 'group',
