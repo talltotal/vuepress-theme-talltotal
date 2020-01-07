@@ -214,6 +214,22 @@ export default {
           background-color lighten(#282829, 10%)
           a
             color $accentColor
+body.theme-dark
+  .search-box
+    input
+      color darken($textColorDark, 25%)
+      border-color lighten($borderColorDark, 10%)
+      background-color $bgColorDark
+    .suggestions
+      border-color $borderColorDark
+      background #282829
+    .suggestion
+      a
+        color darken($textColorDark, 14%)
+      &.focused
+        background-color lighten(#282829, 10%)
+        a
+          color $accentColor
 @media (max-width: $MQNarrow)
   .search-box
     input

@@ -102,4 +102,7 @@ a.sidebar-link
   body:not(.theme-light)
     .sidebar .sidebar-sub-headers
       background darken(#363636, 30%)
+body.theme-dark
+  .sidebar .sidebar-sub-headers
+    background darken(#363636, 30%)
 </style>

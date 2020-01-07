@@ -109,5 +109,8 @@ function resolveOpenGroupIndex (route, items) {
     .sidebar
       .nav-links
         border-bottom-color $borderColorDark
-
+body.theme-dark
+  .sidebar
+    .nav-links
+      border-bottom-color $borderColorDark
 </style>

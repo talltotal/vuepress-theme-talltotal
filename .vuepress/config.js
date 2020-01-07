@@ -1,6 +1,6 @@
 module.exports = {
     base: '/vuepress-theme-talltotal/',
-    title: 'demo',
+    title: 'vuepress-theme-talltotal',
     description: 'demo',
     markdown: {
         lineNumbers: true,
@@ -10,7 +10,7 @@ module.exports = {
     },
     theme: '/../packages',
     themeConfig: {
-        // themeType: 'light',
+        logo: '/imgs/logo.png',
         nav: [
             { text: '首页', link: '/' },
             { text: '测试', link: '/test/demo.html' },

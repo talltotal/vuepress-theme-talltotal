@@ -79,4 +79,8 @@ export default {
     .navbar
       .site-name
         color $textColorDark
+body.theme-dark
+  .navbar
+    .site-name
+      color $textColorDark
 </style>

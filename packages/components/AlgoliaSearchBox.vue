@@ -162,4 +162,35 @@ export default {
       .algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column:before,
       .algolia-autocomplete .algolia-docsearch-suggestion--content:before
         background lighten($bgColorDark, 35%)
+body.theme-dark
+  .algolia-search-wrapper
+    .algolia-autocomplete
+      .ds-dropdown-menu
+        background-color $bgColorDark
+        border-color lighten($bgColorDark, 35%)
+        .ds-suggestion
+          border-bottom-color lighten($bgColorDark, 35%)
+
+      .algolia-docsearch-suggestion
+        border-color $borderColorDark
+        .algolia-docsearch-suggestion--category-header
+          .algolia-docsearch-suggestion--highlight
+            background rgba(0, 0, 0, 0.6)
+        .algolia-docsearch-suggestion--title
+          color $textColorDark
+        .algolia-docsearch-suggestion--subcategory-column
+          background-color lighten($bgColorDark, 20%)
+          border-color $borderColorDark
+        .algolia-docsearch-suggestion--subcategory-column-text
+          color lighten($bgColorDark, 60%)
+      .ds-cursor .algolia-docsearch-suggestion--content
+        background-color lighten($bgColorDark, 30%) !important
+    .algolia-autocomplete .algolia-docsearch-suggestion,
+    .algolia-autocomplete .ds-dropdown-menu [class^=ds-dataset-]
+      background-color lighten($bgColorDark, 10%)
+    .algolia-autocomplete .algolia-docsearch-suggestion--category-header
+      border-bottom-color lighten($bgColorDark, 40%)
+    .algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column:before,
+    .algolia-autocomplete .algolia-docsearch-suggestion--content:before
+      background lighten($bgColorDark, 35%)
 </style>

@@ -20,6 +20,9 @@ yarn add --dev vuepress-theme-talltotal
 - themeType：light or dark
     - 优先级：配置设置 > 系统设置 > 默认light
 
+![light](https://talltotal.github.io/vuepress-theme-talltotal/imgs/light.jpg)
+![dark](https://talltotal.github.io/vuepress-theme-talltotal/imgs/dark.jpg)
+
 ## config
 
 根据配置自动生成菜单：

@@ -221,4 +221,17 @@ function find (page, items, offset) {
     .page-nav
       .inner
         border-top-color $borderColorDark
+body.theme-dark
+  .page-edit
+    .edit-link
+      a
+        color darken($textColorDark, 35%)
+    .last-updated
+      .prefix
+        color darken($textColorDark, 35%)
+      .time
+        color darken($textColorDark, 15%)
+  .page-nav
+    .inner
+      border-top-color $borderColorDark
 </style>

@@ -147,6 +147,12 @@ export default {
       border-radius 0.25rem
       white-space nowrap
       margin 0
+  body.theme-dark
+    .dropdown-wrapper
+      .nav-dropdown
+        background-color #282829
+        border-color $borderColorDark
+        border-bottom-color $borderColorDark
 
 @media (prefers-color-scheme: dark) and (min-width: $MQMobile)
   body:not(.theme-light)

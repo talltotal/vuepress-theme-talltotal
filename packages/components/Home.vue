@@ -99,6 +99,11 @@ export default {
       .footer
         border-top-color $borderColorDark
         color darken($textColorDark, 50%)
+body.theme-dark
+  .home
+    .footer
+      border-top-color $borderColorDark
+      color darken($textColorDark, 50%)
 
 @media (max-width: $MQMobile)
   .home

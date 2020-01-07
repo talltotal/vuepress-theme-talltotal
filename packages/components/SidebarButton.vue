@@ -32,5 +32,7 @@
   body:not(.theme-light)
     .sidebar-button
       color $textColorDark
-
+body.theme-dark
+  .sidebar-button
+    color $textColorDark
 </style>

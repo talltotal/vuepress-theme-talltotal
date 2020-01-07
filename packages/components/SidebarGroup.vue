@@ -68,4 +68,7 @@ export default {
   body:not(.theme-light)
     .sidebar-group-items
       background darken(#282829, 10%)
+body.theme-dark
+  .sidebar-group-items
+    background darken(#282829, 10%)
 </style>
