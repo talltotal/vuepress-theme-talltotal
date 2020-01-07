@@ -5,7 +5,7 @@
   "publisher": "talltotal",
   "scripts": {
     "start": "npm run dev",
-    "dev": "vuepress dev",
+    "dev": "./node_modules/.bin/vuepress dev",
     "lint:es": "eslint --ext .js,.vue .",
     "lint:style": "stylelint packages/**/*.{css,less,scss}",
     "lint:styl": "stylint packages/**/*.{styl,vue}",

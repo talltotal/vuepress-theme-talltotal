@@ -72,7 +72,7 @@
 
 ## 图片
 
-![logo](/imgs/logo.png)
+![logo](/vuepress-theme-talltotal/imgs/logo.png)
 
 ## 代码
 

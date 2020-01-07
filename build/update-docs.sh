@@ -2,7 +2,7 @@
 rm -rf .vuepress/dist
 
 # Build
-vuepress build
+node_modules/.bin/vuepress build
 
 # Publish to GitHub Pages
 cd .vuepress/dist
