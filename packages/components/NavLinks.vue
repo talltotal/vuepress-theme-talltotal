@@ -134,13 +134,14 @@ export default {
     &:hover, &.router-link-active
       margin-bottom -2px
       border-bottom 2px solid lighten($accentColor, 8%)
+@media screen and (min-width: $MQMobile)
   body.theme-dark
     .nav-links a
       color $textColorDark
       &.router-link-active
         color $textColorDark
 
-@media (prefers-color-scheme: dark)
+@media screen and (prefers-color-scheme: dark)
   body:not(.theme-light)
     .nav-links
       a

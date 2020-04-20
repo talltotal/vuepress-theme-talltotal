@@ -191,3 +191,17 @@ th, td
 
 @require './mobile.styl'
 @require './dark.styl'
+
+@media not screen
+  body
+    background unset
+  .navbar
+    display none
+  .sidebar
+    display none
+  .page
+    padding-left 0
+    padding-bottom 0
+  .content:not(.custom) > *:first-child,
+  .content__default > *:first-child
+    margin-top 0.67em

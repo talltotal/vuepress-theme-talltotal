@@ -64,11 +64,12 @@ export default {
   overflow hidden
   background #f6f7f7
 
-@media (prefers-color-scheme: dark)
+@media screen and (prefers-color-scheme: dark)
   body:not(.theme-light)
     .sidebar-group-items
       background darken(#282829, 10%)
-body.theme-dark
-  .sidebar-group-items
-    background darken(#282829, 10%)
+@media screen
+  body.theme-dark
+    .sidebar-group-items
+      background darken(#282829, 10%)
 </style>

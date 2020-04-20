@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-talltotal",
-  "version": "0.0.10",
+  "version": "0.0.13",
   "description": "talltotal theme for VuePress",
   "publisher": "talltotal",
   "scripts": {

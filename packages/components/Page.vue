@@ -4,7 +4,7 @@
     <!-- 内容区域 -->
     <component :is="$page.frontmatter.pageLayout" v-if="$page.frontmatter.pageLayout" />
     <Content v-else :custom="false" />
-    <div class="page-edit">
+    <div v-if="!!editLink || !!lastUpdated" class="page-edit">
       <div v-if="!!editLink" class="edit-link">
         <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
         <OutboundLink />
@@ -207,7 +207,7 @@ function find (page, items, offset) {
       float none
       text-align left
 
-@media (prefers-color-scheme: dark)
+@media screen and (prefers-color-scheme: dark)
   body:not(.theme-light)
     .page-edit
       .edit-link
@@ -221,17 +221,21 @@ function find (page, items, offset) {
     .page-nav
       .inner
         border-top-color $borderColorDark
-body.theme-dark
-  .page-edit
-    .edit-link
-      a
-        color darken($textColorDark, 35%)
-    .last-updated
-      .prefix
-        color darken($textColorDark, 35%)
-      .time
-        color darken($textColorDark, 15%)
+@media screen
+  body.theme-dark
+    .page-edit
+      .edit-link
+        a
+          color darken($textColorDark, 35%)
+      .last-updated
+        .prefix
+          color darken($textColorDark, 35%)
+        .time
+          color darken($textColorDark, 15%)
+    .page-nav
+      .inner
+        border-top-color $borderColorDark
+@media not screen
   .page-nav
-    .inner
-      border-top-color $borderColorDark
+    display none
 </style>

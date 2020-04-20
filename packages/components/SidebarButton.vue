@@ -28,11 +28,12 @@
   .sidebar-button
     display block
 
-@media (prefers-color-scheme: dark)
+@media screen and (prefers-color-scheme: dark)
   body:not(.theme-light)
     .sidebar-button
       color $textColorDark
-body.theme-dark
-  .sidebar-button
-    color $textColorDark
+@media screen
+  body.theme-dark
+    .sidebar-button
+      color $textColorDark
 </style>

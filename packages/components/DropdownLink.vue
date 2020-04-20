@@ -153,8 +153,7 @@ export default {
         background-color #282829
         border-color $borderColorDark
         border-bottom-color $borderColorDark
-
-@media (prefers-color-scheme: dark) and (min-width: $MQMobile)
+@media screen and (prefers-color-scheme: dark) and (min-width: $MQMobile)
   body:not(.theme-light)
     .dropdown-wrapper
       .nav-dropdown

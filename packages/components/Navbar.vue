@@ -74,13 +74,14 @@ export default {
     .can-hide
       display none
 
-@media (prefers-color-scheme: dark)
+@media screen and (prefers-color-scheme: dark)
   body:not(.theme-light)
     .navbar
       .site-name
         color $textColorDark
-body.theme-dark
-  .navbar
-    .site-name
-      color $textColorDark
+@media screen
+  body.theme-dark
+    .navbar
+      .site-name
+        color $textColorDark
 </style>

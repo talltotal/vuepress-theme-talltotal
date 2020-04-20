@@ -98,11 +98,12 @@ a.sidebar-link
       font-weight 500
       background none
 
-@media (prefers-color-scheme: dark)
+@media screen and (prefers-color-scheme: dark)
   body:not(.theme-light)
     .sidebar .sidebar-sub-headers
       background darken(#363636, 30%)
-body.theme-dark
-  .sidebar .sidebar-sub-headers
-    background darken(#363636, 30%)
+@media screen
+  body.theme-dark
+    .sidebar .sidebar-sub-headers
+      background darken(#363636, 30%)
 </style>
